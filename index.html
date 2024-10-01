@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La grande loterie de Gamma Aquilae</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <img src="gamma.png" sr />
+        <h1>La loterie du mardi</h1>
+        <br />
+        <hr />
+        <br />
+        <div class="input-section">
+            <label for="participants">Entrez les participants (séparés par "|") :</label>
+            <textarea id="participants" placeholder="Participant1 | Participant2 | Participant3"></textarea>
+            <button id="draw-btn">Tirer au sort</button>
+        </div>
+        <div class="result-section" id="result" style="display: none;">
+            <h2>Gagnant :</h2>
+            <div id="winner" class="winner"></div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
