@@ -14,8 +14,8 @@ document.getElementById('draw-btn').addEventListener('click', function () {
         return;
     }
 
-    // Séparer les participants par le caractère "|"
-    const participants = participantsInput.split("|").map(p => p.trim()).filter(p => p.length > 0);
+    // Séparer les participants par les caractères "|" ou "/"
+    const participants = participantsInput.split(/[\|\/]/).map(p => p.trim()).filter(p => p.length > 0);
 
     if (participants.length === 0) {
         alert("Veuillez entrer des participants valides.");
