@@ -18,10 +18,14 @@
         <div class="input-section">
             <label for="participants">Entrez les participants (séparés par "|" ou "/") :</label>
             <textarea id="participants" placeholder="Participant1 | Participant2 | Participant3"></textarea>
+
+            <label for="numWinners">Nombre de gagnants à tirer :</label>
+            <input type="number" id="numWinners" min="1" value="1" />
+
             <button id="draw-btn">Tirer au sort</button>
         </div>
         <div class="result-section" id="result" style="display: none;">
-            <h2>Gagnant :</h2>
+            <h2>Gagnant(s) :</h2>
             <div id="winner" class="winner"></div>
         </div>
     </div>
