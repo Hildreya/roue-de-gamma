@@ -51,5 +51,5 @@ document.getElementById('draw-btn').addEventListener('click', function () {
         const winners = participants.slice(0, numWinnersInput);
         winnerDisplay.textContent = winners.join(', ');
         document.getElementById("draw-btn").style.display = "";
-    }, 3000); // Durée réduite à 3 secondes pour lisibilité
+    }, 8000); // Durée réduite à 8 secondes pour lisibilité
 });
