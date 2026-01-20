@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prix des Runes - Forgemagie Helper</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="index.html" class="back-link">&larr; Retour</a>
+            <h1>Prix des Runes</h1>
+            <p class="subtitle">Configurez les prix moyens des runes sur votre serveur</p>
+        </header>
+
+        <main>
+            <div class="actions-bar">
+                <button id="saveBtn" class="btn btn-primary">Sauvegarder</button>
+                <button id="exportBtn" class="btn btn-secondary">Exporter JSON</button>
+                <label class="btn btn-secondary">
+                    Importer JSON
+                    <input type="file" id="importInput" accept=".json" hidden>
+                </label>
+                <button id="resetBtn" class="btn btn-danger">Réinitialiser</button>
+            </div>
+
+            <div class="notification" id="notification"></div>
+
+            <div id="runeCategories"></div>
+        </main>
+
+        <footer>
+            <p>Roue de Gamma - Forgemagie Helper</p>
+            <p class="api-credit">Données fournies par <a href="https://dofusdb.fr" target="_blank">DofusDB</a></p>
+        </footer>
+    </div>
+
+    <script type="module" src="settings.js"></script>
+</body>
+</html>

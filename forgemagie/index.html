@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forgemagie Helper - Roue de Gamma</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Forgemagie Helper</h1>
+            <p class="subtitle">Calculateur de rentabilité brisage</p>
+            <a href="settings.html" class="settings-link">Prix des runes</a>
+        </header>
+
+        <main>
+            <!-- Section recherche d'item -->
+            <section class="search-section">
+                <div class="search-wrapper">
+                    <input
+                        type="text"
+                        id="itemSearch"
+                        placeholder="Rechercher un équipement..."
+                        autocomplete="off"
+                    >
+                    <div class="search-results" id="searchResults"></div>
+                </div>
+            </section>
+
+            <!-- Section affichage de l'item sélectionné -->
+            <section class="item-display" id="itemDisplay" style="display: none;">
+                <div class="item-header">
+                    <img id="itemImage" src="" alt="" class="item-image">
+                    <div class="item-info">
+                        <h2 id="itemName"></h2>
+                        <span class="item-level" id="itemLevel"></span>
+                        <span class="item-type" id="itemType"></span>
+                    </div>
+                </div>
+                <div class="item-stats" id="itemStats"></div>
+            </section>
+
+            <!-- Section calcul -->
+            <section class="calculator-section" id="calculatorSection" style="display: none;">
+                <h3>Paramètres de calcul</h3>
+
+                <div class="calc-inputs">
+                    <div class="input-group">
+                        <label for="craftPrice">Prix du craft</label>
+                        <div class="input-wrapper">
+                            <input type="number" id="craftPrice" min="0" step="1000" placeholder="0">
+                            <span class="unit">K</span>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="marginPercent">Marge de sécurité</label>
+                        <div class="input-wrapper">
+                            <input type="number" id="marginPercent" min="0" max="100" value="10" step="1">
+                            <span class="unit">%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mode de calcul -->
+                <div class="calc-mode">
+                    <label class="radio-label">
+                        <input type="radio" name="calcMode" value="limit" checked>
+                        <span>Calcul du % limite de rentabilité</span>
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="calcMode" value="brisage">
+                        <span>Simulation de brisage</span>
+                    </label>
+                </div>
+
+                <!-- Input pourcentage (pour mode brisage) -->
+                <div class="brisage-inputs" id="brisageInputs" style="display: none;">
+                    <div class="input-group">
+                        <label for="currentPercent">Pourcentage actuel de l'item</label>
+                        <div class="input-wrapper">
+                            <input type="number" id="currentPercent" min="0" max="100" step="0.1" placeholder="Ex: 85">
+                            <span class="unit">%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <button id="calculateBtn" class="btn btn-primary btn-large">Calculer</button>
+            </section>
+
+            <!-- Section résultats -->
+            <section class="results-section" id="resultsSection" style="display: none;">
+                <h3>Résultats</h3>
+
+                <!-- Résultat Focus -->
+                <div class="result-card" id="focusResult">
+                    <h4>Ligne de Focus recommandée</h4>
+                    <div class="focus-info" id="focusInfo"></div>
+                </div>
+
+                <!-- Résultat % limite -->
+                <div class="result-card" id="limitResult">
+                    <h4>Pourcentage limite de rentabilité</h4>
+                    <div class="limit-info" id="limitInfo"></div>
+                </div>
+
+                <!-- Résultat simulation brisage -->
+                <div class="result-card" id="brisageResult" style="display: none;">
+                    <h4>Simulation de brisage</h4>
+                    <div class="brisage-info" id="brisageInfo"></div>
+
+                    <!-- Contrôle manuel du nombre de brisages -->
+                    <div class="custom-brisage" id="customBrisage">
+                        <label for="customBrisageCount">Simuler un nombre précis de brisages :</label>
+                        <div class="input-wrapper inline">
+                            <input type="number" id="customBrisageCount" min="1" max="500" value="1">
+                            <button id="customBrisageBtn" class="btn btn-secondary">Simuler</button>
+                        </div>
+                        <div class="custom-result" id="customBrisageResult"></div>
+                    </div>
+                </div>
+
+                <!-- Détail des lignes -->
+                <div class="result-card collapsible">
+                    <h4 class="collapse-toggle" id="linesToggle">
+                        Détail des lignes de stats
+                        <span class="toggle-icon">+</span>
+                    </h4>
+                    <div class="lines-detail" id="linesDetail" style="display: none;"></div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>Roue de Gamma - Forgemagie Helper</p>
+            <p class="api-credit">Données fournies par <a href="https://dofusdb.fr" target="_blank">DofusDB</a></p>
+        </footer>
+    </div>
+
+    <script type="module" src="app.js"></script>
+</body>
+</html>
