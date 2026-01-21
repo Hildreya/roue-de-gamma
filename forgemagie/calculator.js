@@ -31,16 +31,16 @@ function saveRunePrices(prices) {
 }
 
 /**
- * Calcule le ratio d'une rune (densité / prix)
+ * Calcule le ratio d'une rune (prix / densité)
  * @param {string} runeKey - La clé de la rune
  * @param {Object} prices - Les prix des runes
- * @returns {number} - Le ratio (0 si prix = 0)
+ * @returns {number} - Le ratio (0 si densité = 0)
  */
 function calculateRatio(runeKey, prices) {
     const rune = RUNES_DATA[runeKey];
     const price = prices[runeKey] || 0;
-    if (price === 0) return 0;
-    return rune.density / price;
+    if (rune.density === 0) return 0;
+    return price / rune.density;
 }
 
 /**
@@ -101,7 +101,11 @@ function analyzeItemStats(effects, itemLevel) {
         if (!runeKey) continue;
 
         const rune = RUNES_DATA[runeKey];
-        const statValue = effect.max || effect.min || 0;
+
+        // Calculer la valeur moyenne du jet : (min + max) / 2
+        const minValue = effect.min || 0;
+        const maxValue = effect.max || effect.min || 0;
+        const statValue = (minValue + maxValue) / 2;
 
         if (statValue <= 0) continue;
 
@@ -111,7 +115,9 @@ function analyzeItemStats(effects, itemLevel) {
             effectId: effect.effectId,
             runeKey: runeKey,
             runeName: rune.name,
-            statValue: statValue,
+            statValue: statValue,       // Moyenne utilisée pour les calculs
+            minValue: minValue,         // Valeur min du jet
+            maxValue: maxValue,         // Valeur max du jet
             weight: weight,
             density: rune.density,
             effect: rune.effect,
@@ -267,7 +273,7 @@ function simulateBrisages(params) {
 
     while (currentPercentage >= thresholdWithoutMargin && iterations < maxIterations) {
         // Calculer le nouveau pourcentage après brisage
-        const newPercentage = currentPercentage - (2.76e-5 * currentPercentage * currentPercentage);
+        const newPercentage = currentPercentage - (9.52e-5 * currentPercentage * currentPercentage);
 
         // Calculer les kamas générés par ce brisage
         const kamasGenerated = (profitability * newPercentage / 100) - itemPrice;
@@ -349,7 +355,7 @@ function simulateSpecificBrisages(params, numBrisages) {
     const history = [];
 
     for (let i = 0; i < numBrisages; i++) {
-        const newPercentage = currentPercentage - (2.76e-5 * currentPercentage * currentPercentage);
+        const newPercentage = currentPercentage - (9.52e-5 * currentPercentage * currentPercentage);
         const kamasGenerated = (profitability * newPercentage / 100) - itemPrice;
         totalKamas += kamasGenerated;
 

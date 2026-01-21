@@ -48,8 +48,8 @@ const RUNES_DATA = {
         shortName: "Do Air",
         density: 5,
         effect: 1,
-        characteristicId: null,
-        effectIds: [235]
+        characteristicId: 91,
+        effectIds: [428]
     },
     do_cri: {
         name: "Dommages Critiques",
@@ -57,31 +57,31 @@ const RUNES_DATA = {
         density: 5,
         effect: 1,
         characteristicId: null,
-        effectIds: [240]
+        effectIds: [418]
     },
     do_eau: {
         name: "Dommages Eau",
         shortName: "Do Eau",
         density: 5,
         effect: 1,
-        characteristicId: null,
-        effectIds: [234]
+        characteristicId: 90,
+        effectIds: [426]
     },
     do_feu: {
         name: "Dommages Feu",
         shortName: "Do Feu",
         density: 5,
         effect: 1,
-        characteristicId: null,
-        effectIds: [233]
+        characteristicId: 89,
+        effectIds: [424]
     },
     do_neutre: {
         name: "Dommages Neutre",
         shortName: "Do Neutre",
         density: 5,
         effect: 1,
-        characteristicId: null,
-        effectIds: [231]
+        characteristicId: 87,
+        effectIds: [430]
     },
     do_per_ar: {
         name: "% Dommages Armes",
@@ -129,7 +129,7 @@ const RUNES_DATA = {
         density: 5,
         effect: 1,
         characteristicId: null,
-        effectIds: [241]
+        effectIds: [414]
     },
     do_ren: {
         name: "Renvoie Dommages",
@@ -144,8 +144,8 @@ const RUNES_DATA = {
         shortName: "Do Terre",
         density: 5,
         effect: 1,
-        characteristicId: null,
-        effectIds: [232]
+        characteristicId: 88,
+        effectIds: [422]
     },
     fo: {
         name: "Force",
@@ -161,23 +161,23 @@ const RUNES_DATA = {
         density: 4,
         effect: 1,
         characteristicId: null,
-        effectIds: [753]
+        effectIds: [752]
     },
     ga_pa: {
-        name: "Esquive PA",
-        shortName: "Ga PA",
-        density: 7,
+        name: "PA",
+        shortName: "Pa",
+        density: 100,
         effect: 1,
-        characteristicId: 27,
-        effectIds: [160]
+        characteristicId: 1,
+        effectIds: [111]
     },
     ga_pme: {
-        name: "Esquive PM",
-        shortName: "Ga PMe",
-        density: 7,
+        name: "PM",
+        shortName: "Pme",
+        density: 90,
         effect: 1,
-        characteristicId: 28,
-        effectIds: [161]
+        characteristicId: 23,
+        effectIds: [128]
     },
     ine: {
         name: "Intelligence",
@@ -232,7 +232,7 @@ const RUNES_DATA = {
         shortName: "Prosp",
         density: 3,
         effect: 1,
-        characteristicId: null,
+        characteristicId: 48,
         effectIds: [176]
     },
     pui: {
@@ -249,7 +249,7 @@ const RUNES_DATA = {
         density: 2,
         effect: 1,
         characteristicId: null,
-        effectIds: [243]
+        effectIds: [242]
     },
     re_cri: {
         name: "Résistance Critique",
@@ -257,7 +257,7 @@ const RUNES_DATA = {
         density: 2,
         effect: 1,
         characteristicId: null,
-        effectIds: [424]
+        effectIds: [420]
     },
     re_eau: {
         name: "Résistance Eau",
@@ -265,7 +265,7 @@ const RUNES_DATA = {
         density: 2,
         effect: 1,
         characteristicId: null,
-        effectIds: [242]
+        effectIds: [241]
     },
     re_feu: {
         name: "Résistance Feu",
@@ -273,7 +273,7 @@ const RUNES_DATA = {
         density: 2,
         effect: 1,
         characteristicId: null,
-        effectIds: [241]
+        effectIds: [243]
     },
     re_neutre: {
         name: "Résistance Neutre",
@@ -284,12 +284,12 @@ const RUNES_DATA = {
         effectIds: [244]
     },
     re_pa: {
-        name: "Résistance PA",
-        shortName: "Rés PA",
+        name: "Esquive PA",
+        shortName: "Esq PA",
         density: 7,
         effect: 1,
-        characteristicId: null,
-        effectIds: [756]
+        characteristicId: 27,
+        effectIds: [160]
     },
     re_per_air: {
         name: "% Résistance Air",
@@ -297,7 +297,7 @@ const RUNES_DATA = {
         density: 6,
         effect: 1,
         characteristicId: 34,
-        effectIds: [213]
+        effectIds: [212]
     },
     re_per_di: {
         name: "% Résistance Distance",
@@ -313,7 +313,7 @@ const RUNES_DATA = {
         density: 6,
         effect: 1,
         characteristicId: 37,
-        effectIds: [212]
+        effectIds: [211]
     },
     re_per_feu: {
         name: "% Résistance Feu",
@@ -321,7 +321,7 @@ const RUNES_DATA = {
         density: 6,
         effect: 1,
         characteristicId: 35,
-        effectIds: [211]
+        effectIds: [213]
     },
     re_per_me: {
         name: "% Résistance Mêlée",
@@ -348,12 +348,12 @@ const RUNES_DATA = {
         effectIds: [210]
     },
     re_pm: {
-        name: "Résistance PM",
-        shortName: "Rés PM",
+        name: "Esquive PM",
+        shortName: "Esq PM",
         density: 7,
         effect: 1,
-        characteristicId: null,
-        effectIds: [757]
+        characteristicId: 28,
+        effectIds: [161]
     },
     re_pou: {
         name: "Résistance Poussée",
@@ -377,7 +377,7 @@ const RUNES_DATA = {
         density: 7,
         effect: 1,
         characteristicId: null,
-        effectIds: [754]
+        effectIds: [410]
     },
     ret_pm: {
         name: "Retrait PM",
@@ -385,7 +385,7 @@ const RUNES_DATA = {
         density: 7,
         effect: 1,
         characteristicId: null,
-        effectIds: [755]
+        effectIds: [412]
     },
     sa: {
         name: "Sagesse",
@@ -409,7 +409,7 @@ const RUNES_DATA = {
         density: 4,
         effect: 1,
         characteristicId: null,
-        effectIds: [752]
+        effectIds: [753]
     },
     vi: {
         name: "Vitalité",
@@ -443,12 +443,26 @@ for (const [runeKey, runeData] of Object.entries(RUNES_DATA)) {
 
 /**
  * Retourne les clés des runes triées par ordre alphabétique de la clé (id)
- * avec "chasse" toujours à la fin
+ * avec quelques exceptions :
+ * - ret_pa et ret_pm entre pui et re_air
+ * - chasse toujours à la fin
  */
 function getSortedRuneKeys() {
-    const keys = Object.keys(RUNES_DATA).filter(k => k !== 'chasse');
+    const specialKeys = ['chasse', 'ret_pa', 'ret_pm'];
+    const keys = Object.keys(RUNES_DATA).filter(k => !specialKeys.includes(k));
     keys.sort((a, b) => a.localeCompare(b));
-    keys.push('chasse'); // Chasse toujours à la fin
+
+    // Insérer ret_pa et ret_pm après pui et avant re_air
+    const reAirIndex = keys.indexOf('re_air');
+    if (reAirIndex !== -1) {
+        keys.splice(reAirIndex, 0, 'ret_pa', 'ret_pm');
+    } else {
+        // Fallback si re_air n'existe pas
+        keys.push('ret_pa', 'ret_pm');
+    }
+
+    // Rune spéciale à la fin
+    keys.push('chasse');
     return keys;
 }
 

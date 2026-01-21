@@ -2,7 +2,7 @@
  * Application principale Forgemagie Helper
  */
 
-import { searchEquipments, getItemById, getItemImageUrl, formatItemEffects } from './api.js';
+import { searchEquipments, getItemById, getItemImageUrl, getEffectIconUrl, formatItemEffects } from './api.js';
 import { RUNES_DATA } from './runes.js';
 import {
     getRunePrices,
@@ -184,12 +184,33 @@ function displayItem(item) {
 
     if (item.effects && item.effects.length > 0) {
         for (const effect of item.effects) {
-            if (effect.description) {
-                const statDiv = document.createElement('div');
-                statDiv.className = 'stat-line';
-                statDiv.textContent = effect.description;
-                statsContainer.appendChild(statDiv);
+            const statDiv = document.createElement('div');
+            statDiv.className = 'stat-line';
+
+            // Ajouter l'icône de l'effet
+            const iconUrl = getEffectIconUrl(effect.effectId);
+            if (iconUrl) {
+                const icon = document.createElement('img');
+                icon.src = iconUrl;
+                icon.alt = '';
+                icon.className = 'stat-icon';
+                statDiv.appendChild(icon);
             }
+
+            // Ajouter le texte de la stat
+            const textSpan = document.createElement('span');
+            if (effect.description) {
+                textSpan.textContent = effect.description;
+            } else {
+                // Fallback si pas de description : afficher min-max
+                const valueText = effect.min === effect.max
+                    ? `${effect.min}`
+                    : `${effect.min} à ${effect.max}`;
+                textSpan.textContent = `${valueText} (effet ${effect.effectId})`;
+            }
+            statDiv.appendChild(textSpan);
+
+            statsContainer.appendChild(statDiv);
         }
     }
 }
@@ -206,12 +227,10 @@ function showCalculator() {
  * Configure les écouteurs du calculateur
  */
 function setupCalculatorListeners() {
-    // Mode de calcul
-    document.querySelectorAll('input[name="calcMode"]').forEach(radio => {
-        radio.addEventListener('change', (e) => {
-            const brisageInputs = document.getElementById('brisageInputs');
-            brisageInputs.style.display = e.target.value === 'brisage' ? 'block' : 'none';
-        });
+    // Checkbox simulation de brisage
+    document.getElementById('enableBrisage').addEventListener('change', (e) => {
+        const brisageInputs = document.getElementById('brisageInputs');
+        brisageInputs.style.display = e.target.checked ? 'block' : 'none';
     });
 
     // Bouton calculer
@@ -232,7 +251,7 @@ function calculate() {
 
     const craftPrice = parseInt(document.getElementById('craftPrice').value) || 0;
     const marginPercent = parseInt(document.getElementById('marginPercent').value) || 10;
-    const calcMode = document.querySelector('input[name="calcMode"]:checked').value;
+    const enableBrisage = document.getElementById('enableBrisage').checked;
 
     if (craftPrice <= 0) {
         showNotification('Veuillez entrer un prix de craft valide', 'error');
@@ -246,7 +265,7 @@ function calculate() {
     }
 
     let currentPercent = null;
-    if (calcMode === 'brisage') {
+    if (enableBrisage) {
         currentPercent = parseFloat(document.getElementById('currentPercent').value);
         if (!currentPercent || currentPercent <= 0) {
             showNotification('Veuillez entrer un pourcentage valide', 'error');
@@ -262,13 +281,13 @@ function calculate() {
         return;
     }
 
-    displayResults(calcMode);
+    displayResults(enableBrisage);
 }
 
 /**
  * Affiche les résultats
  */
-function displayResults(calcMode) {
+function displayResults(enableBrisage) {
     const resultsSection = document.getElementById('resultsSection');
     resultsSection.style.display = 'block';
 
@@ -280,7 +299,7 @@ function displayResults(calcMode) {
 
     // Afficher les résultats de brisage si applicable
     const brisageResult = document.getElementById('brisageResult');
-    if (calcMode === 'brisage' && currentAnalysis.simulation) {
+    if (enableBrisage && currentAnalysis.simulation) {
         brisageResult.style.display = 'block';
         displayBrisageResult();
     } else {

@@ -63,25 +63,20 @@
                     </div>
                 </div>
 
-                <!-- Mode de calcul -->
-                <div class="calc-mode">
-                    <label class="radio-label">
-                        <input type="radio" name="calcMode" value="limit" checked>
-                        <span>Calcul du % limite de rentabilité</span>
+                <!-- Option simulation de brisage -->
+                <div class="brisage-option">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="enableBrisage">
+                        <span>Simuler le brisage</span>
                     </label>
-                    <label class="radio-label">
-                        <input type="radio" name="calcMode" value="brisage">
-                        <span>Simulation de brisage</span>
-                    </label>
-                </div>
 
-                <!-- Input pourcentage (pour mode brisage) -->
-                <div class="brisage-inputs" id="brisageInputs" style="display: none;">
-                    <div class="input-group">
-                        <label for="currentPercent">Pourcentage actuel de l'item</label>
-                        <div class="input-wrapper">
-                            <input type="number" id="currentPercent" min="0" max="100" step="0.1" placeholder="Ex: 85">
-                            <span class="unit">%</span>
+                    <div class="brisage-inputs" id="brisageInputs" style="display: none;">
+                        <div class="input-group">
+                            <label for="currentPercent">Pourcentage actuel de l'item</label>
+                            <div class="input-wrapper">
+                                <input type="number" id="currentPercent" min="0" max="100" step="0.1" placeholder="Ex: 85">
+                                <span class="unit">%</span>
+                            </div>
                         </div>
                     </div>
                 </div>
